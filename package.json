@@ -1,0 +1,32 @@
+{
+  "name": "express-js-mysql-sequalize",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/01indicy/express-js-mysql-sequalize.git"
+  },
+  "author": "Justin Joram",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/01indicy/express-js-mysql-sequalize/issues"
+  },
+  "homepage": "https://github.com/01indicy/express-js-mysql-sequalize#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.20",
+    "process": "^0.11.10",
+    "sequelize": "^6.30.0"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.6.0"
+  }
+}
