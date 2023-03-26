@@ -11,7 +11,7 @@ controller.createNewUser = async (req, res) => {
             }).then((response) => {
                 res.send({response})
             }).catch((err) => {
-                console.error(err)
+                res.send({error:err.message})
             })
         } else {
             res.send({msg: `email: ${req.body.email} is already used`})
@@ -39,4 +39,34 @@ controller.readSingleUser = async (req,res) => {
     })
 }
 
-module.exports = controller
+controller.updateUserDetails = async (req,res) => {
+    await User.findByPk(req.body.id).then(async (user) => {
+        if (user === null) {
+            res.send({msg: `user with id ${req.body.id} not found`})
+        } else {
+            await User.update({
+                firstName:req.body.firstName,
+                lastName:req.body.lastName,
+                email:req.body.email
+            }, { where: { id:req.body.id } }).then((response) => {
+                res.send({msg:'user information updated'})
+            }).catch((err) => {
+                console.error(err)
+            })
+        }
+    })
+}
+
+controller.deleteUser = async (req,res) => {
+    await User.findByPk(req.params.id).then(async (user) => {
+        if(user === null){
+            res.send({msg: `user with id ${req.params.id} not found`})
+        }else{
+            await User.destroy({ where: {id:req.params.id} }).then((response) => {
+                res.send({msg:`user with id ${req.params.id} deleted`})
+            }).catch((err) => console.log(err))
+        }
+    })
+}
+
+module.exports = controller;
